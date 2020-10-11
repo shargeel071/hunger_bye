@@ -1,24 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_bye/config/screen_config.dart';
-import 'package:hunger_bye/pages/login.dart';
 
 import 'bounceButton.dart';
 
-enum SingingCharacter { Donner, Partner }
-
-class SignUp extends StatefulWidget {
+class Request extends StatefulWidget {
   @override
-  _SignUpState createState() => _SignUpState();
+  _RequestState createState() => _RequestState();
 }
 
-class _SignUpState extends State<SignUp> {
-  SingingCharacter _character;
+class _RequestState extends State<Request> {
+  String dropdownValue = 'One';
   @override
   Widget build(BuildContext context) {
     ScreenConfig().init(context);
     return Scaffold(
-
       backgroundColor: Colors.white,
       body: Container(
         height: ScreenConfig.screenHeight,
@@ -27,19 +23,16 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             children: [
               SizedBox(height: ScreenConfig.blockHeight * 15, ),
-              Center(
-                child: Container(
-
-                  height: ScreenConfig.blockHeight * 10,
-                  width: ScreenConfig.blockWidth * 70,
-                  decoration: BoxDecoration(
-
-                      image: DecorationImage(image: AssetImage('assets/images/hungerByeMain.png'),
-                          fit: BoxFit.fill)
-                  ),
-
-                ),
-              ),
+              // Center(
+              //   child: Container(
+              //
+              //     height: ScreenConfig.blockHeight * 10,
+              //     width: ScreenConfig.blockWidth * 70,
+              //
+              //     child: Center(child: Text("PRODUCT",style: TextStyle(fontSize: 50,fontWeight: FontWeight.bold,color: Color(0xff20409A)),)),
+              //
+              //   ),
+              // ),
 
               SizedBox(height: ScreenConfig.blockHeight * 1, ),
               Container(
@@ -72,13 +65,26 @@ class _SignUpState extends State<SignUp> {
                                   border: Border(bottom: BorderSide(color: Colors.blue))
                               ),
 
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "First Name",
-                                    hintStyle: TextStyle(color: Colors.grey)
-                                ),
-                              ),
+                              child: DropdownButton<String>(
+                                value: dropdownValue,
+                                icon: Icon(Icons.arrow_downward),
+                                iconSize: 24,
+                                elevation: 16,
+                                style: TextStyle(color: Color(0xff20409A)),
+
+                                onChanged: (String newValue) {
+                                  setState(() {
+                                    dropdownValue = newValue;
+                                  });
+                                },
+                                items: <String>['One', 'Two', 'three', 'Four']
+                                    .map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                              )
 
                             ),
 
@@ -91,80 +97,18 @@ class _SignUpState extends State<SignUp> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Last Name",
-                                    hintStyle: TextStyle(color: Colors.grey)
-                                ),
-                              ),
-
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(8.0),
-                              decoration: BoxDecoration(
-                                  border: Border(bottom: BorderSide(color: Colors.blue))
-                              ),
-
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Email or Phone number",
+                                    hintText: "Customer Name",
                                     hintStyle: TextStyle(color: Colors.grey)
                                 ),
                               ),
 
                             ),
 
-                            Container(
-                              padding: EdgeInsets.all(8.0),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Password",
-                                    hintStyle: TextStyle(color: Colors.grey)
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                       ),
 
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Radio(
-                                  value: SingingCharacter.Donner,
-                                  groupValue: _character,
-                                  onChanged: (SingingCharacter value) {
-                                    setState(() {
-                                      _character = value;
-                                    });
-                                  },
-                                ),
 
-                                Text("Donner" , style: TextStyle(color: Color(0xff20409A), fontWeight: FontWeight.bold,fontSize: 20),)
-                              ],
-                            ),
-
-                            Row(
-                              children: [
-                                Radio(
-                                  value: SingingCharacter.Donner,
-                                  groupValue: _character,
-                                  onChanged: (SingingCharacter value) {
-                                    setState(() {
-                                      _character = value;
-                                    });
-                                  },
-                                ),
-
-                                Text("Partner" , style: TextStyle(color: Color(0xff20409A), fontWeight: FontWeight.bold,fontSize: 20),)
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
 
                       SizedBox(height: 20,),
                       BounceButton(
@@ -190,11 +134,45 @@ class _SignUpState extends State<SignUp> {
 
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
                         },
                         child:  Center(
                           child: Text(
-                            'Sign Up',
+                            'Post',
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20,),
+                      BounceButton(
+                        decoration:  BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x80000000),
+                                blurRadius: 12.0,
+                                offset: Offset(0.0, 5.0),
+                              ),
+                            ],
+                            gradient:
+                            LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color(0xff20409A),
+                                Color(0xff1E3ACF),
+                              ],
+
+                            )
+
+                        ),
+                        onPressed: () {
+                        },
+                        child:  Center(
+                          child: Text(
+                            'Manage Request',
                             style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
@@ -210,7 +188,6 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       ),
-
     );
   }
 }

@@ -1,24 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_bye/config/screen_config.dart';
-import 'package:hunger_bye/pages/login.dart';
-
 import 'bounceButton.dart';
 
-enum SingingCharacter { Donner, Partner }
-
-class SignUp extends StatefulWidget {
+class PartnerForm extends StatefulWidget {
   @override
-  _SignUpState createState() => _SignUpState();
+  _PartnerFormState createState() => _PartnerFormState();
 }
 
-class _SignUpState extends State<SignUp> {
-  SingingCharacter _character;
+class _PartnerFormState extends State<PartnerForm> {
   @override
   Widget build(BuildContext context) {
     ScreenConfig().init(context);
     return Scaffold(
-
       backgroundColor: Colors.white,
       body: Container(
         height: ScreenConfig.screenHeight,
@@ -75,7 +69,7 @@ class _SignUpState extends State<SignUp> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "First Name",
+                                    hintText: "Business Name",
                                     hintStyle: TextStyle(color: Colors.grey)
                                 ),
                               ),
@@ -91,7 +85,7 @@ class _SignUpState extends State<SignUp> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Last Name",
+                                    hintText: "Contact Number",
                                     hintStyle: TextStyle(color: Colors.grey)
                                 ),
                               ),
@@ -106,65 +100,18 @@ class _SignUpState extends State<SignUp> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Email or Phone number",
+                                    hintText: "Business Address",
                                     hintStyle: TextStyle(color: Colors.grey)
                                 ),
                               ),
 
                             ),
 
-                            Container(
-                              padding: EdgeInsets.all(8.0),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Password",
-                                    hintStyle: TextStyle(color: Colors.grey)
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                       ),
 
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Radio(
-                                  value: SingingCharacter.Donner,
-                                  groupValue: _character,
-                                  onChanged: (SingingCharacter value) {
-                                    setState(() {
-                                      _character = value;
-                                    });
-                                  },
-                                ),
 
-                                Text("Donner" , style: TextStyle(color: Color(0xff20409A), fontWeight: FontWeight.bold,fontSize: 20),)
-                              ],
-                            ),
-
-                            Row(
-                              children: [
-                                Radio(
-                                  value: SingingCharacter.Donner,
-                                  groupValue: _character,
-                                  onChanged: (SingingCharacter value) {
-                                    setState(() {
-                                      _character = value;
-                                    });
-                                  },
-                                ),
-
-                                Text("Partner" , style: TextStyle(color: Color(0xff20409A), fontWeight: FontWeight.bold,fontSize: 20),)
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
 
                       SizedBox(height: 20,),
                       BounceButton(
@@ -190,11 +137,10 @@ class _SignUpState extends State<SignUp> {
 
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
                         },
                         child:  Center(
                           child: Text(
-                            'Sign Up',
+                            'Continous',
                             style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
@@ -210,7 +156,6 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       ),
-
     );
   }
 }

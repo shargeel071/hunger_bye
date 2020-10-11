@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hunger_bye/pages/login.dart';
+import 'package:hunger_bye/pages/offers.dart';
+import 'package:hunger_bye/pages/partnerForm.dart';
+import 'package:hunger_bye/pages/partnerHomePage.dart';
+import 'package:hunger_bye/pages/product.dart';
+import 'package:hunger_bye/pages/request.dart';
+import 'package:hunger_bye/pages/resetPassword.dart';
 import 'package:hunger_bye/pages/signUp.dart';
 
 void main() {

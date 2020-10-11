@@ -5,20 +5,16 @@ import 'package:hunger_bye/pages/login.dart';
 
 import 'bounceButton.dart';
 
-enum SingingCharacter { Donner, Partner }
-
-class SignUp extends StatefulWidget {
+class ResetPassword extends StatefulWidget {
   @override
-  _SignUpState createState() => _SignUpState();
+  _ResetPasswordState createState() => _ResetPasswordState();
 }
 
-class _SignUpState extends State<SignUp> {
-  SingingCharacter _character;
+class _ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
     ScreenConfig().init(context);
     return Scaffold(
-
       backgroundColor: Colors.white,
       body: Container(
         height: ScreenConfig.screenHeight,
@@ -27,6 +23,7 @@ class _SignUpState extends State<SignUp> {
           child: Column(
             children: [
               SizedBox(height: ScreenConfig.blockHeight * 15, ),
+
               Center(
                 child: Container(
 
@@ -40,8 +37,8 @@ class _SignUpState extends State<SignUp> {
 
                 ),
               ),
+              SizedBox(height: ScreenConfig.blockHeight * 5, ),
 
-              SizedBox(height: ScreenConfig.blockHeight * 1, ),
               Container(
                 height: ScreenConfig.blockHeight *61,
                 width: ScreenConfig.blockWidth *100,
@@ -66,21 +63,6 @@ class _SignUpState extends State<SignUp> {
                         ),
                         child: Column(
                           children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.all(8.0),
-                              decoration: BoxDecoration(
-                                  border: Border(bottom: BorderSide(color: Colors.blue))
-                              ),
-
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "First Name",
-                                    hintStyle: TextStyle(color: Colors.grey)
-                                ),
-                              ),
-
-                            ),
 
                             Container(
                               padding: EdgeInsets.all(8.0),
@@ -91,22 +73,7 @@ class _SignUpState extends State<SignUp> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Last Name",
-                                    hintStyle: TextStyle(color: Colors.grey)
-                                ),
-                              ),
-
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(8.0),
-                              decoration: BoxDecoration(
-                                  border: Border(bottom: BorderSide(color: Colors.blue))
-                              ),
-
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Email or Phone number",
+                                    hintText: "New Password",
                                     hintStyle: TextStyle(color: Colors.grey)
                                 ),
                               ),
@@ -118,7 +85,7 @@ class _SignUpState extends State<SignUp> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Password",
+                                    hintText: "Confirm Password",
                                     hintStyle: TextStyle(color: Colors.grey)
                                 ),
                               ),
@@ -127,44 +94,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
 
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Radio(
-                                  value: SingingCharacter.Donner,
-                                  groupValue: _character,
-                                  onChanged: (SingingCharacter value) {
-                                    setState(() {
-                                      _character = value;
-                                    });
-                                  },
-                                ),
 
-                                Text("Donner" , style: TextStyle(color: Color(0xff20409A), fontWeight: FontWeight.bold,fontSize: 20),)
-                              ],
-                            ),
-
-                            Row(
-                              children: [
-                                Radio(
-                                  value: SingingCharacter.Donner,
-                                  groupValue: _character,
-                                  onChanged: (SingingCharacter value) {
-                                    setState(() {
-                                      _character = value;
-                                    });
-                                  },
-                                ),
-
-                                Text("Partner" , style: TextStyle(color: Color(0xff20409A), fontWeight: FontWeight.bold,fontSize: 20),)
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
 
                       SizedBox(height: 20,),
                       BounceButton(
@@ -194,7 +124,7 @@ class _SignUpState extends State<SignUp> {
                         },
                         child:  Center(
                           child: Text(
-                            'Sign Up',
+                            'Reset Password',
                             style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
@@ -210,7 +140,6 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       ),
-
     );
   }
 }

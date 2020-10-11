@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_bye/config/screen_config.dart';
+import 'package:hunger_bye/pages/resetPassword.dart';
 import 'package:hunger_bye/pages/signUp.dart';
 
 import 'bounceButton.dart';
@@ -136,10 +137,9 @@ class _LoginState extends State<Login> {
                         alignment: Alignment.topRight,
                         child: InkWell(
 
-                            // onTap: (){
-                            //   Navigator.push(context, MaterialPageRoute(builder: (context) => practice()));
-                            // }
-                           // ,
+                             onTap: (){
+                               Navigator.push(context, MaterialPageRoute(builder: (context) => ResetPassword()));
+                             },
                             child: Text("Forgot Password?" , style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),)
                         ),
                       ),
@@ -190,7 +190,7 @@ class _LoginState extends State<Login> {
                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
                 },
 
-                  child: Text("Sign Up" , style: TextStyle(color: Color(0xff20409A), fontWeight: FontWeight.bold,fontSize: 15),)
+                  child: Text("Create a new account" , style: TextStyle(color: Color(0xff20409A), fontWeight: FontWeight.bold,fontSize: 15),)
               ),
 
 
